@@ -8,6 +8,7 @@ class BookSchema(BaseModel):
     published_date: str
     page_count: int
     language: str
+    testing: str
 
 class BookUpdateSchema(BaseModel):
     title: str

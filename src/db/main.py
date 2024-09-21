@@ -7,16 +7,15 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.orm import sessionmaker
 
 
-engine = AsyncEngine(create_engine(
+engine = create_async_engine(
     url=Config.DATABASE_URL,
     echo=True
-))
+)
 
 
 
 async def initdb():
     """create a our db model in the postgress db"""
-
     async with engine.begin() as conn:
         await conn.run_sync(SQLModel.metadata.create_all)
 
