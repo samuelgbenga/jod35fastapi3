@@ -11,6 +11,9 @@ from src.db.main import get_session
 book_router = APIRouter()
 book_service = BookService()
 
+
+
+
 @book_router.get("/books", response_model=List[Book])
 async def get_all_books(session: AsyncSession = Depends(get_session)):
     books = await book_service.get_all_books(session)
