@@ -14,9 +14,6 @@ class UserService:
 
         return result.all()
 
-
-
-
     async def get_user_by_email(self, email: str, session: AsyncSession):
         statement = select(User).where(User.email == email)
 
