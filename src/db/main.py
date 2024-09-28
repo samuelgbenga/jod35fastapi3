@@ -3,6 +3,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine
 from src.config import Config
 from sqlmodel import SQLModel
 from src.books.models import Book
+from src.auth.models import User
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.orm import sessionmaker
 
