@@ -1,3 +1,4 @@
+from sqlmodel import desc
 from .models import User
 from .schemas import UserCreateModel
 from .utils import generate_password_hash
@@ -6,6 +7,16 @@ from sqlmodel import select
 
 
 class UserService:
+    async def get_all_users(self, session: AsyncSession):
+        statement = select(User).order_by(desc(User.created_at))
+
+        result = await session.exec(statement)
+
+        return result.all()
+
+
+
+
     async def get_user_by_email(self, email: str, session: AsyncSession):
         statement = select(User).where(User.email == email)
 
